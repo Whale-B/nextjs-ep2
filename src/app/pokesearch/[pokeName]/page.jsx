@@ -22,6 +22,7 @@ function PokeResult() {
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${params.pokeName}`);
       const data = await response.json();
       setPokeData(data);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -42,7 +43,6 @@ function PokeResult() {
                     <>
                         <h3 className='text-3xl'>{pokeData.name}</h3>
                         <Image src={pokeData.sprites?.other.dream_world.front_default} width={300} height={300} alt={pokeData.name}/>
-                        <Image src={pokeData.sprites?.other['official-artwork'].front_default} width={300} height={300} alt={pokeData.name}/>
                         <div className='mt-5'>
                             <p className='my-3'>Weight:{pokeData.weight}</p>
                             <p className='my-3'>
